@@ -1,0 +1,36 @@
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class JulgamentoPrisioneiroTest {
+	
+	JulgamentoPrisioneiro Julgamento = new JulgamentoPrisioneiro();
+
+	@Test
+	void testCalculaPenaMutua() {
+		int resultadoEsperado = 5;
+		int resultadoReal = Julgamento.calculaPena("Culpado", "Culpado");
+		assertEquals(resultadoEsperado, resultadoReal);
+	}
+	
+	@Test
+	void testCalculaInocencia() {
+		int resultadoEsperado = 0;
+		int resultadoReal = Julgamento.calculaPena("Inocente", "Inocente");
+		assertEquals(resultadoEsperado, resultadoReal);
+	}
+	
+	@Test
+	void testCalculaPenaIndividual() {
+		int resultadoEsperado = 10;
+		int resultadoReal = Julgamento.calculaPena("Culpado", "Inocente");
+		assertEquals(resultadoEsperado, resultadoReal);
+	}
+	
+	@Test
+	void testCalculaPenaCumplices() {
+		int resultadoEsperado = 1;
+		int resultadoReal = Julgamento.calculaPena("Inocente", "Culpado");
+		assertEquals(resultadoEsperado, resultadoReal);
+	}
+}
